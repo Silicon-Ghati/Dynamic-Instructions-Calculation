@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+
+print("starti")
+
+for i in range (150000):
+	print("si")
