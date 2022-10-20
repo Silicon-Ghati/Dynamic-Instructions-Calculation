@@ -19,7 +19,15 @@ else
 fi
 chmod +x gdb_instructions
 
+echo "[+] Analyzing the binary dynamically"
+echo "[+] Parsing the instructions from the user application"
+echo ""
+
 ./gdb_instructions | gdb $1 2>/dev/null | grep "=>" | cut -c 10- > $1_ins
+
+echo "==================================="
+echo "[+] Performing instruction analysis"
+echo ""
 
 echo Total Number Of Instructions \: $(cat $1_ins | wc -l)
 echo ""
@@ -44,3 +52,8 @@ then
 else
 	echo ""
 fi
+
+echo [+] Cleaning up
+
+rm gdb_instructions
+rm $1_ins
