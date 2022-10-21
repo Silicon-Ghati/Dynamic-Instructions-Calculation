@@ -53,20 +53,19 @@ i=0
 
 cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | sort | uniq | while read operand
 do
-	echo -n '\t'$operand : $(cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | grep $operand | wc -l)'\t\t'
+	echo -n '\t'$operand : $(cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | grep $operand | wc -l)' \t\t'
 	i=$((($i)+1))
 	if [ $((($i)%3)) -eq 0 ]
 	then
-		echo '\n'
+		echo ""
 	fi
 done
 
-echo ""
 if [ $((($(cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | sort | uniq | wc -l))%3)) -eq 0 ]
 then
-	echo "">/dev/null
+        echo "">/dev/null
 else
-	echo ""
+        echo ""
 fi
 
 echo ""
@@ -79,5 +78,6 @@ echo $(cat $1_ins | grep -i "JA\|JAE\|JB\|JBE\|JC\|JCXZ\|JECXZ\|JRCXZ\|JE\|JG\|J
 echo ''
 echo [+] Cleaning up
 
-rm gdb_instructions
+# rm gdb_instructions
 rm $1_ins
+rm /tmp/gdberr
