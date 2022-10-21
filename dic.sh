@@ -53,6 +53,14 @@ else
 	echo ""
 fi
 
+echo ""
+echo ""
+echo "======================="
+echo "[+] Analyzing Branching\n"
+echo -n "Number Of Branches : "
+echo $(cat $1_ins | grep -i "JA\|JAE\|JB\|JBE\|JC\|JCXZ\|JECXZ\|JRCXZ\|JE\|JG\|JGE\|JL\|JLE\|JNA\|JNAE\|JNB\|JNBE\|JNC\|JNE\|JNG\|JNGE\|JNL\|JNLE\|JNO\|JNP\|JNS\|JNZ\|JO\|JP\|JPE\|JPO\|JS\|JZ\|LOOP\|LOOPE\|LOOPNE\|LOOPNZ\|LOOPZ\|JMP\|CALL\|RET\|INT1\|INT3\|INTn\|INTO\|IRET\|IRETD\|IRETQ\|JMP\|CALL\|RET\|SYSCALL\|SYSRET\|SYSENTER\|SYSEXIT\|VMLAUNCH\|VMRESUME" | wc -l)
+
+echo ''
 echo [+] Cleaning up
 
 rm gdb_instructions
