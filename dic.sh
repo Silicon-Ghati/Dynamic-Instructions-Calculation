@@ -1,10 +1,23 @@
 #!/usr/bin/sh
 
-echo "set disassembly-flavor intel
-
+file $1 2>/dev/null | grep 64-bit > /dev/null
+if [ $? -eq 0 ]
+then
+	echo "set disassembly-flavor intel
 define hook-stop
 x/1i \$rip
 end" > ~/.gdbinit
+fi
+
+file $1 2>/dev/null | grep 32-bit > /dev/null
+
+if [ $? -eq 0 ]
+then
+        echo "set disassembly-flavor intel
+define hook-stop
+x/1i \$eip
+end" > ~/.gdbinit
+fi
 
 if [ $# -eq 2 ]
 then
