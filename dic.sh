@@ -4,16 +4,17 @@ file $1 2>/dev/null | grep 64-bit > /dev/null
 if [ $? -eq 0 ]
 then
 	echo "set disassembly-flavor intel
+
 define hook-stop
 x/1i \$rip
 end" > ~/.gdbinit
 fi
 
 file $1 2>/dev/null | grep 32-bit > /dev/null
-
 if [ $? -eq 0 ]
 then
         echo "set disassembly-flavor intel
+
 define hook-stop
 x/1i \$eip
 end" > ~/.gdbinit
@@ -21,22 +22,24 @@ fi
 
 if [ $# -eq 2 ]
 then
-	echo "IyEvdXNyL2Jpbi9weXRob24zCgpwcmludCgic3RhcnRpIDwgaW5wdXRfZmlsZSIpCgpmb3IgaSBpbiByYW5nZSAoMTUwMDAwKToKCXByaW50KCJzaSIpCg==" | base64 -d > gdb_instructions
+	echo "IyEvdXNyL2Jpbi9weXRob24zCgpwcmludCgic3RhcnRpIDwgaW5wdXRfZmlsZSIpCgp3aGlsZShUcnVlKToKCXByaW50KCJzaSIpCg==" | base64 -d > gdb_instructions
 	echo $2 | xargs -I{} sh -c "sed -i 's/input_file/{}/g' gdb_instructions"
 elif [ $# -eq 1 ]
 then
-	echo "IyEvdXNyL2Jpbi9weXRob24zCgpwcmludCgic3RhcnRpIikKCmZvciBpIGluIHJhbmdlICgxNTAwMDApOgoJcHJpbnQoInNpIikK" | base64 -d > gdb_instructions
+	echo "IyEvdXNyL2Jpbi9weXRob24zCgpwcmludCgic3RhcnRpIikKCndoaWxlKFRydWUpOgoJcHJpbnQoInNpIikK" | base64 -d > gdb_instructions
 else
 	echo "Usage : ./dic.sh binary input_file(optional)\nUse the input file if the program needs user input"
 	exit
 fi
+
 chmod +x gdb_instructions
 
 echo "[+] Analyzing the binary dynamically"
 echo "[+] Parsing the instructions from the user application"
 echo ""
 
-./gdb_instructions | gdb $1 2>/dev/null | grep "=>" | cut -c 10- > $1_ins
+./pk.sh $1&
+./gdb_instructions | gdb $1 2>/tmp/gdberr | grep "=>" | cut -c 10- > $1_ins
 
 echo "==================================="
 echo "[+] Performing instruction analysis"
