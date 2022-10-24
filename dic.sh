@@ -75,6 +75,6 @@ echo $(cat $1_ins | grep -i "JA\|JAE\|JB\|JBE\|JC\|JCXZ\|JECXZ\|JRCXZ\|JE\|JG\|J
 echo ''
 echo [+] Cleaning up
 
-# rm gdb_instructions
-rm $1_ins
+rm gdb_instructions
+#rm $1_ins
 rm /tmp/gdberr
