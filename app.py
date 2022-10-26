@@ -1,6 +1,8 @@
 
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
+import subprocess
+import shlex
 
 app = Flask(__name__)
 
@@ -18,8 +20,8 @@ def save_file():
         filename = secure_filename(f.filename)
 
         f.save(app.config['UPLOAD_FOLDER'] + filename)
-
-        file = open(app.config['UPLOAD_FOLDER'] + filename,"r")
+        subprocess.call(shlex.split('./test.sh'))
+        file = open(app.config['UPLOAD_FOLDER'] + "out","r")
         content = file.read()
         
         
