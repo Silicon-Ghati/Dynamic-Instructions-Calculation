@@ -20,8 +20,8 @@ def save_file():
         filename = secure_filename(f.filename)
 
         f.save(app.config['UPLOAD_FOLDER'] + filename)
-        subprocess.call(shlex.split('./test.sh'))
-        file = open(app.config['UPLOAD_FOLDER'] + "out","r")
+        subprocess.call(shlex.split('./dic.sh static/a.out'))
+        file = open(app.config['UPLOAD_FOLDER'] + filename + '_ins',"r")
         content = file.read()
         
         
