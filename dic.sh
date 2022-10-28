@@ -30,6 +30,8 @@ else
 	echo "Usage : ./dic.sh binary input_file(optional)\nUse the input file if the program needs user input"
 	exit
 fi
+
+chmod +x $1
 chmod +x gdb_instructions
 
 echo "[+] Analyzing the binary dynamically"
