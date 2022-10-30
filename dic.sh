@@ -46,19 +46,19 @@ echo "==================================="
 echo "[+] Performing instruction analysis"
 echo ""
 
-echo Total Number Of Instructions \: $(cat $1_ins | wc -l)
-echo ""
-echo Number of Instructions of Different Types \:
+echo Total Number Of Instructions \: $(cat $1_ins | wc -l) | tee -a $1_analysis
+echo "" | tee -a $1_analysis
+echo Number of Instructions of Different Types \: | tee -a $1_analysis
 
 i=0
 
 cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | sort | uniq | while read operand
 do
-	echo -n '\t'$operand : $(cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | grep $operand | wc -l)' \t\t'
+	echo -n '\t'$operand : $(cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | grep $operand | wc -l)' \t\t' | tee -a $1_analysis
 	i=$((($i)+1))
 	if [ $((($i)%3)) -eq 0 ]
 	then
-		echo ""
+		echo "" | tee -a $1_analysis
 	fi
 done
 
@@ -66,19 +66,21 @@ if [ $((($(cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | so
 then
         echo "">/dev/null
 else
-        echo ""
+        echo "" | tee -a $1_analysis
 fi
 
 echo ""
-echo ""
+echo "" | tee -a $1_analysis
 echo "======================="
 echo "[+] Analyzing Branching\n"
-echo -n "Number Of Branches : "
-echo $(cat $1_ins | grep -i "JA\|JAE\|JB\|JBE\|JC\|JCXZ\|JECXZ\|JRCXZ\|JE\|JG\|JGE\|JL\|JLE\|JNA\|JNAE\|JNB\|JNBE\|JNC\|JNE\|JNG\|JNGE\|JNL\|JNLE\|JNO\|JNP\|JNS\|JNZ\|JO\|JP\|JPE\|JPO\|JS\|JZ\|LOOP\|LOOPE\|LOOPNE\|LOOPNZ\|LOOPZ\|JMP\|CALL\|RET\|INT1\|INT3\|INTn\|INTO\|IRET\|IRETD\|IRETQ\|JMP\|CALL\|RET\|SYSCALL\|SYSRET\|SYSENTER\|SYSEXIT\|VMLAUNCH\|VMRESUME" | wc -l)
+echo -n "Number Of Branches : " | tee -a $1_analysis
+echo $(cat $1_ins | grep -i "JA\|JAE\|JB\|JBE\|JC\|JCXZ\|JECXZ\|JRCXZ\|JE\|JG\|JGE\|JL\|JLE\|JNA\|JNAE\|JNB\|JNBE\|JNC\|JNE\|JNG\|JNGE\|JNL\|JNLE\|JNO\|JNP\|JNS\|JNZ\|JO\|JP\|JPE\|JPO\|JS\|JZ\|LOOP\|LOOPE\|LOOPNE\|LOOPNZ\|LOOPZ\|JMP\|CALL\|RET\|INT1\|INT3\|INTn\|INTO\|IRET\|IRETD\|IRETQ\|SYSCALL\|SYSRET\|SYSENTER\|SYSEXIT\|VMLAUNCH\|VMRESUME" | wc -l) | tee -a $1_analysis
 
 echo ''
 echo [+] Cleaning up
 
 rm gdb_instructions
+
 #rm $1_ins
 rm /tmp/gdberr
+
