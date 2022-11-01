@@ -21,26 +21,26 @@ def save_file():
         global filename
         filename = secure_filename(f.filename)
 
-        f.save(app.config['UPLOAD_FOLDER'] + filename)
-        subprocess.call(shlex.split('./dic.sh ' + app.config['UPLOAD_FOLDER'] + str(filename)))
+        #f.save(app.config['UPLOAD_FOLDER'] + filename)
+        #subprocess.call(shlex.split('./dic.sh ' + app.config['UPLOAD_FOLDER'] + str(filename)))
     
     return render_template('contenthome.html')
 
 @app.route('/analysis')
 def analysis():
-    ana = open(app.config['UPLOAD_FOLDER'] + filename + '_analysis',"r")
+    ana = open(app.config['UPLOAD_FOLDER'] + 'a' + '_analysis',"r")
     contentana = ana.read()
     return render_template('content.html', content=contentana)
 
 @app.route('/ins')
 def ins():
-    ins = open(app.config['UPLOAD_FOLDER'] + filename + '_ins',"r")
+    ins = open(app.config['UPLOAD_FOLDER'] + 'a' + '_ins',"r")
     content = ins.read()
     return render_template('content.html', content=content)
 
 @app.route('/chart')
 def chart():
-   chart = open(app.config['UPLOAD_FOLDER'] + filename + '_chart',"r")
+   chart = open(app.config['UPLOAD_FOLDER'] + 'a' + '_chart',"r")
    contentchart = chart.read()
    return contentchart
 
