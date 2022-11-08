@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
@@ -22,21 +23,26 @@ def save_file():
 
         f.save(app.config['UPLOAD_FOLDER'] + filename)
         subprocess.call(shlex.split('./dic.sh static/' + str(filename)))
-    
+
     return render_template('contenthome.html')
 
 @app.route('/analysis')
 def analysis():
     ana = open(app.config['UPLOAD_FOLDER'] + filename + '_analysis',"r")
     contentana = ana.read()
-    return render_template('content.html', content=contentana) 
+    return render_template('content.html', content=contentana)
 
 @app.route('/ins')
 def ins():
-    file = open(app.config['UPLOAD_FOLDER'] + filename + '_ins',"r")
-    content = file.read()
-    return render_template('content.html', content=content) 
+    ins = open(app.config['UPLOAD_FOLDER'] + filename + '_ins',"r")
+    content = ins.read()
+    return render_template('content.html', content=content)
+
+@app.route('/chart')
+def chart():
+   chart = open(app.config['UPLOAD_FOLDER'] + filename + '_chart',"r")
+   contentchart = chart.read()
+   return contentchart
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug = True)
-
