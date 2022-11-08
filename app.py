@@ -17,14 +17,24 @@ def upload_file():
 def save_file():
     if request.method == 'POST':
         f = request.files['file']
+        global filename
         filename = secure_filename(f.filename)
 
         f.save(app.config['UPLOAD_FOLDER'] + filename)
         subprocess.call(shlex.split('./dic.sh static/' + str(filename)))
-        file = open(app.config['UPLOAD_FOLDER'] + filename + '_ins',"r")
-        content = file.read()
-        
-        
+    
+    return render_template('contenthome.html')
+
+@app.route('/analysis')
+def analysis():
+    ana = open(app.config['UPLOAD_FOLDER'] + filename + '_analysis',"r")
+    contentana = ana.read()
+    return render_template('content.html', content=contentana) 
+
+@app.route('/ins')
+def ins():
+    file = open(app.config['UPLOAD_FOLDER'] + filename + '_ins',"r")
+    content = file.read()
     return render_template('content.html', content=content) 
 
 if __name__ == '__main__':
