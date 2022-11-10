@@ -1,5 +1,6 @@
 #!/usr/bin/sh
 
+echo -n "" > $1_analysis
 file $1 2>/dev/null | grep 64-bit > /dev/null
 if [ $? -eq 0 ]
 then
@@ -54,13 +55,32 @@ i=0
 
 cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | sort | uniq | while read operand
 do
-	echo -n '\t'$operand : $(cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | grep $operand | wc -l)' \t\t' | tee -a $1_analysis
+	echo -n '\t'
+	echo -n $operand : $(cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | grep $operand | wc -l) | tee -a $1_analysis
+	echo -n ' \t\t'
+	echo '' >> $1_analysis
 	i=$((($i)+1))
 	if [ $((($i)%3)) -eq 0 ]
 	then
-		echo "" | tee -a $1_analysis
+		echo ""
 	fi
 done
+
+################################################################################################################################
+
+cat templates/chartStart > $1_chart
+
+cat $1_analysis | head -n $(($(cat a_analysis |  wc -l) - 3)) | tail -n $(($(cat a_analysis |  wc -l) - 6)) | sort -h --key 3 -r | while read line
+do
+        echo -n \[\'$(echo $line | cut -d ":" -f 1 | awk '{$1=$1};1')\'\, >> $1_chart
+        echo $(echo $line | cut -d ":" -f 2)\]\, >> $1_chart
+done
+
+echo "['dummy',0]" >> $1_chart
+
+cat templates/chartEnd >> $1_chart
+
+################################################################################################################################
 
 if [ $((($(cat $1_ins | cut -d ":" -f 2 | awk '{$1=$1};1' | cut -d " " -f 1 | sort | uniq | wc -l))%3)) -eq 0 ]
 then
@@ -83,4 +103,3 @@ rm gdb_instructions
 
 #rm $1_ins
 rm /tmp/gdberr
-
