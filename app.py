@@ -7,7 +7,7 @@ import shlex
 
 app = Flask(__name__)
 
-app.config["UPLOAD_FOLDER"] = "static/"
+app.config["UPLOAD_FOLDER"] = "static/dic_temp_files/"
 
 @app.route('/')
 def upload_file():
@@ -22,8 +22,8 @@ def save_file():
         filename = secure_filename(f.filename)
 
         f.save(app.config['UPLOAD_FOLDER'] + filename)
-        subprocess.call(shlex.split('./dic.sh static/' + str(filename)))
-
+        subprocess.call(shlex.split('./dic.sh ' + app.config['UPLOAD_FOLDER'] + str(filename)))
+    
     return render_template('contenthome.html')
 
 @app.route('/analysis')
