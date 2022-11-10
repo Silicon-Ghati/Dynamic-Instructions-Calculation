@@ -101,5 +101,5 @@ echo [+] Cleaning up
 
 rm gdb_instructions
 #Delete files older than 5 mins.
-find static -mmin +5 -exec rm -f {} \;  
+find static/dic_temp_files -mmin +5 -exec rm -f {} \;  
 rm /tmp/gdberr
