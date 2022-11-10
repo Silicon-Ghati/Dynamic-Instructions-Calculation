@@ -70,7 +70,7 @@ done
 
 cat templates/chartStart > $1_chart
 
-cat $1_analysis | head -n $(($(cat a_analysis |  wc -l) - 3)) | tail -n $(($(cat a_analysis |  wc -l) - 6)) | while read line
+cat $1_analysis | head -n $(($(cat a_analysis |  wc -l) - 3)) | tail -n $(($(cat a_analysis |  wc -l) - 6)) | sort -h --key 3 -r | while read line
 do
         echo -n \[\'$(echo $line | cut -d ":" -f 1 | awk '{$1=$1};1')\'\, >> $1_chart
         echo $(echo $line | cut -d ":" -f 2)\]\, >> $1_chart
