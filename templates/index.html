@@ -1,18 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>File Upload</title>
-</head>
-<body>
-    <form action = "/display" method = "POST" 
-         enctype = "multipart/form-data">
-         <input type = "file" name = "file" />
-         <br><br>
-         <input type = "submit"/>
-         <input type = "reset"/>
-      </form>  
-</body>
+    <style>
+      #loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #444444;
+        width: 70px;
+        height: 70px;
+        animation: spin 1s linear infinite;
+        visibility: hidden;
+      }
+
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    </style>
+    <script>
+        function loading() {
+                document.querySelector(
+                  "body").style.visibility = "hidden";
+                document.querySelector(
+                  "#loader").style.visibility = "visible";
+        };
+    </script>
+  </head>
+  <body>
+    <div id="loader" class="center"></div>
+    <form action="/display" method="POST" enctype="multipart/form-data">
+      <input type="file" name="file" />
+      <br /><br />
+      <input type="submit" onclick="loading();" />
+      <input type="reset" />
+    </form>
+
+  </body>
 </html>
