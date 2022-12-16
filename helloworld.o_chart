@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+
+<h1>Assembly Instruction Frequency Analysis Chart</h1>
+
+<div id="piechart"></div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Instructions', 'Number Of Instructions'],
+['mov',54543],
+['cmp',21825],
+['add',20326],
+['test',15644],
+['movzx',10797],
+['lea',8239],
+['and',4635],
+['sub',3880],
+['push',3202],
+['sar',2569],
+['pop',2192],
+['je',2021],
+['or',1458],
+['shl',1442],
+['shr',1288],
+['jne',1219],
+['ret',705],
+['endbr64',590],
+['ja',521],
+['jmp',434],
+['call',402],
+['pcmpeqb',364],
+['jb',343],
+['movq',329],
+['movd',326],
+['pxor',304],
+['not',267],
+['movdqa',263],
+['jbe',256],
+['punpcklqdq',227],
+['movlpd',226],
+['movhpd',226],
+['movaps',218],
+['cmove',199],
+['pmovmskb',198],
+['notrack',173],
+['sete',171],
+['movsx',169],
+['psubb',162],
+['nop',151],
+['bsf',150],
+['div',94],
+['setb',84],
+['rep',81],
+['movabs',79],
+['setbe',77],
+['movsxd',57],
+['jae',57],
+['movdqu',47],
+['cmovb',45],
+['neg',43],
+['pslldq',41],
+['movups',40],
+['bt',34],
+['syscall',33],
+['data16',26],
+['jg',24],
+['cpuid',22],
+['por',21],
+['cmovne',21],
+['punpcklwd',14],
+['punpcklbw',14],
+['psrldq',14],
+['pshufd',14],
+['mul',14],
+['setne',13],
+['imul',13],
+['vpcmpeqb',10],
+['rol',10],
+['rdtsc',8],
+['cmpxchg',8],
+['vmovd',6],
+['js',5],
+['paddq',4],
+['movhps',4],
+['bnd',4],
+['vmovdqa',3],
+['shufpd',3],
+['setg',3],
+['jle',3],
+['cmova',3],
+['cdqe',3],
+['vpbroadcastb',2],
+['vmovdqu',2],
+['repz',2],
+['rdsspq',2],
+['idiv',2],
+['cqo',2],
+['tzcnt',1],
+['ror',1],
+['cmovbe',1],
+['bsr',1],
+['',0],
+['dummy',0]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Instruction Frequency Analysis', 'width':1000, 'height':1000};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+</script>
+
+</body>
+</html>

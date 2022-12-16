@@ -1,0 +1,113 @@
+    _                      _                 _       
+   / \     _ __     __ _  | |  _   _   ___  (_)  ___ 
+  / _ \   | '_ \   / _` | | | | | | | / __| | | / __|
+ / ___ \  | | | | | (_| | | | | |_| | \__ \ | | \__ \
+/_/   \_\ |_| |_|  \__,_| |_|  \__, | |___/ |_| |___/
+                               |___/                 
+Total Number Of Instructions : 190859
+
+Number of Instructions of Different Types :
+: 0
+add : 20326
+and : 4635
+bnd : 4
+bsf : 150
+bsr : 1
+bt : 34
+call : 402
+cdqe : 3
+cmova : 3
+cmovb : 45
+cmovbe : 1
+cmove : 199
+cmovne : 21
+cmp : 21825
+cmpxchg : 8
+cpuid : 22
+cqo : 2
+data16 : 26
+div : 94
+endbr64 : 590
+idiv : 2
+imul : 13
+ja : 521
+jae : 57
+jb : 343
+jbe : 256
+je : 2021
+jg : 24
+jle : 3
+jmp : 434
+jne : 1219
+js : 5
+lea : 8239
+mov : 54543
+movabs : 79
+movaps : 218
+movd : 326
+movdqa : 263
+movdqu : 47
+movhpd : 226
+movhps : 4
+movlpd : 226
+movq : 329
+movsx : 169
+movsxd : 57
+movups : 40
+movzx : 10797
+mul : 14
+neg : 43
+nop : 151
+not : 267
+notrack : 173
+or : 1458
+paddq : 4
+pcmpeqb : 364
+pmovmskb : 198
+pop : 2192
+por : 21
+pshufd : 14
+pslldq : 41
+psrldq : 14
+psubb : 162
+punpcklbw : 14
+punpcklqdq : 227
+punpcklwd : 14
+push : 3202
+pxor : 304
+rdsspq : 2
+rdtsc : 8
+rep : 81
+repz : 2
+ret : 705
+rol : 10
+ror : 1
+sar : 2569
+setb : 84
+setbe : 77
+sete : 171
+setg : 3
+setne : 13
+shl : 1442
+shr : 1288
+shufpd : 3
+sub : 3880
+syscall : 33
+test : 15644
+tzcnt : 1
+vmovd : 6
+vmovdqa : 3
+vmovdqu : 2
+vpbroadcastb : 2
+vpcmpeqb : 10
+vpmovmskb : 12
+vpor : 1
+vpxor : 2
+vzeroupper : 2
+xchg : 150
+xgetbv : 1
+xor : 1091
+xrstor : 2
+xsavec : 2
+
+Number Of Branches : 35828

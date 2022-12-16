@@ -1,0 +1,86 @@
+    _                      _                 _       
+   / \     _ __     __ _  | |  _   _   ___  (_)  ___ 
+  / _ \   | '_ \   / _` | | | | | | | / __| | | / __|
+ / ___ \  | | | | | (_| | | | | |_| | \__ \ | | \__ \
+/_/   \_\ |_| |_|  \__,_| |_|  \__, | |___/ |_| |___/
+                               |___/                 
+Total Number Of Instructions : 37619
+
+Number of Instructions of Different Types :
+: 0
+add : 4784
+and : 311
+bsf : 28
+bt : 34
+call : 87
+cdqe : 3
+cmove : 3
+cmovne : 8
+cmp : 5412
+cpuid : 14
+data16 : 6
+div : 5
+endbr64 : 147
+imul : 3
+ja : 213
+jae : 32
+jb : 116
+jbe : 40
+je : 312
+jg : 8
+jmp : 63
+jne : 218
+js : 1
+lea : 752
+mov : 9141
+movabs : 14
+movaps : 10
+movd : 73
+movdqa : 44
+movdqu : 23
+movhpd : 10
+movlpd : 10
+movq : 16
+movsx : 147
+movsxd : 35
+movups : 18
+movzx : 2129
+mul : 4
+neg : 26
+nop : 20
+not : 51
+notrack : 45
+or : 315
+paddq : 4
+pcmpeqb : 68
+pmovmskb : 43
+pop : 200
+por : 7
+pshufd : 6
+pslldq : 14
+psrldq : 5
+psubb : 23
+punpcklbw : 6
+punpcklqdq : 10
+punpcklwd : 6
+push : 297
+pxor : 69
+rdsspq : 1
+rdtsc : 3
+ret : 132
+rol : 3
+sar : 28
+sete : 7
+setne : 1
+shl : 158
+shr : 92
+shufpd : 2
+sub : 334
+syscall : 16
+test : 4186
+xchg : 16
+xgetbv : 1
+xor : 264
+
+
+Number Of Branches : 2518
