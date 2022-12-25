@@ -22,11 +22,11 @@ fi
 
 if [ $# -eq 2 ]
 then
-	echo "IyEvdXNyL2Jpbi9weXRob24zCgpwcmludCgic3RhcnRpIDwgaW5wdXRfZmlsZSIpCgpmb3IgaSBpbiByYW5nZSAoMTUwMDAwKToKCXByaW50KCJzaSIpCg==" | base64 -d > gdb_instructions
+	echo "IyEvdXNyL2Jpbi9weXRob24zCgpwcmludCgic3RhcnRpIDwgaW5wdXRfZmlsZSIpCgpmb3IgaSBpbiByYW5nZSAoMTAwMDApOgoJcHJpbnQoInNpIikK" | base64 -d > gdb_instructions
 	echo $2 | xargs -I{} sh -c "sed -i 's/input_file/{}/g' gdb_instructions"
 elif [ $# -eq 1 ]
 then
-	echo "IyEvdXNyL2Jpbi9weXRob24zCgpwcmludCgic3RhcnRpIikKCmZvciBpIGluIHJhbmdlICgxNTAwMDApOgoJcHJpbnQoInNpIikK" | base64 -d > gdb_instructions
+	echo "IyEvdXNyL2Jpbi9weXRob24zCgpwcmludCgic3RhcnRpIikKCmZvciBpIGluIHJhbmdlICgxMDAwMCk6CglwcmludCgic2kiKQo" | base64 -d > gdb_instructions
 else
 	echo "Usage : ./dic.sh binary input_file(optional)\nUse the input file if the program needs user input"
 	exit
