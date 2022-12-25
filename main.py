@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 
 from flask import Flask, render_template, request
@@ -7,7 +8,7 @@ import shlex
 
 app = Flask(__name__)
 
-app.config["UPLOAD_FOLDER"] = "static/dic_temp_files/"
+app.config["UPLOAD_FOLDER"] = "/home/instructions/dic/static/dic_temp_files/"
 
 @app.route('/')
 def upload_file():
@@ -22,7 +23,7 @@ def save_file():
         filename = secure_filename(f.filename)
 
         f.save(app.config['UPLOAD_FOLDER'] + filename)
-        subprocess.call(shlex.split('./dic.sh ' + app.config['UPLOAD_FOLDER'] + str(filename)))
+        subprocess.call(shlex.split('bash /home/instructions/dic/dic.sh ' + app.config['UPLOAD_FOLDER'] + str(filename)))
     
     return render_template('contenthome.html')
 
