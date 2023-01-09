@@ -36,7 +36,7 @@ def ins_api():
         filename = secure_filename(f.filename)
 
         f.save(app.config['UPLOAD_FOLDER'] + filename)
-        subprocess.call(shlex.split('./dic.sh ' + app.config['UPLOAD_FOLDER'] + str(filename)))
+        subprocess.call(shlex.split('bash /home/instructions/dic/dic.sh ' + app.config['UPLOAD_FOLDER'] + str(filename)))
         a = host + app.config['UPLOAD_FOLDER'] + filename + '_analysis'
         i = host + app.config['UPLOAD_FOLDER'] + filename + '_ins'
         c = host +app.config['UPLOAD_FOLDER'] + filename + '_chart'
