@@ -13,7 +13,7 @@ An open-source tool to find the frequency of different assembly instructions of 
 
 # Usage :
 
-You can use this application in 2 ways. One of the ways is through the command line and the other way is through a web application that will be hosted on your local machine. 
+You can use this application in 2 ways. One of the ways is through the command line and the other way is through a web application that will be hosted on your local machine or using the website [https://instructions.pythonanywhere.com/](https://instructions.pythonanywhere.com/)
 
 ## 1st Way (Using Terminal):
 
@@ -46,3 +46,7 @@ python app.py
 1. Visit the URL which will be printed in the terminal, or you can also visit http://localhost:5000 or http://127.0.0.1:5000
 2. Select the binary file which you want to analyze and click the submit button.
 3. In a few minutes the analysis will be ready.
+
+# Using Rest API Documentation:
+
+[How to use API for instructions of your program](docs/api.md)
