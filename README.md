@@ -4,6 +4,15 @@
 
 An open-source tool to find the frequency of different assembly instructions of an executable file to be executed. 
 
+#&quot;Part of Diversion 2k23 Open-source Event&quot;
+<p align="center">
+    <a href="https://diversion.tech/">
+        <img src="https://github.com/acm-iem/Readme-template/blob/main/Logos/Diversion%20Full%20Logo%20White.png" width="30%">
+    </a>
+</p>
+
+
+
 # Requirements :
 
 - Linux Environment
@@ -46,6 +55,18 @@ python app.py
 1. Visit the URL which will be printed in the terminal, or you can also visit http://localhost:5000 or http://127.0.0.1:5000
 2. Select the binary file which you want to analyze and click the submit button.
 3. In a few minutes the analysis will be ready.
+
+
+# To-Dos
+Create a text input field/input file upload on the web app for users to enter inputs of their program.
+The existing script ahs support for text input. Just implemnt a frontend for the same
+Test the script with the new text input feature to ensure it works as expected
+
+Expose an API for the same, provide clear instructions for how to use it
+
+
+
+
 
 # Using Rest API Documentation:
 
